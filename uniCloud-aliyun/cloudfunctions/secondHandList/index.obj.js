@@ -6,9 +6,16 @@ module.exports = {
 		const db = uniCloud.database()
 		const cardsInfoData = db.collection('fiv-sale-list')
 		let  res = await cardsInfoData.get()
-		res.errCode = 0
-		console.log("获取全部二手列表信息",res)
-		return res
+		if(res){
+			res.errCode = 0
+			return res
+		}else{
+			return {
+				errCode:-1,
+				message:"数据库查询错误",
+				data:[],
+			}
+		}
 		
 	}
 }
