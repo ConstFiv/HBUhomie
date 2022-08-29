@@ -289,9 +289,8 @@
 			// uni.hideLoading()
 		},
 		onLoad() {
-			this.doList()
+			// this.doList()
 			this.getCardsInfo()
-			console.log("aaaaa")
 		},
 		methods: {
 			// 处理瀑布流
@@ -322,10 +321,12 @@
 			
 			// 获取卡片中的内容
 			async getCardsInfo(){
-				console.log("bbbb")
 				const secondHandList = uniCloud.importObject('secondHandList')
 				let res = await secondHandList.getCardsInfo()
-				console.log('获取卡片中的内容',res)
+				if(res.errCode==0){
+					this.list = res.data
+					this.doList()
+				}
 				
 			},
 			
