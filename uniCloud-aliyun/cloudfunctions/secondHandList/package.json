@@ -1,0 +1,7 @@
+{
+  "name": "secondHandList",
+  "dependencies": {},
+  "extensions": {
+    "uni-cloud-jql": {}
+  }
+}
