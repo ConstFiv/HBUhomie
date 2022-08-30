@@ -326,7 +326,6 @@
 			async getCardsInfo(){
 				const secondHandList = uniCloud.importObject('secondHandList')
 				let res = await secondHandList.getCardsInfo(this.requestTime)
-				console.log("获取卡片中的内容",res)
 				if(res.errCode==0){
 					this.requestTime = this.requestTime+1
 					this.list = res.data

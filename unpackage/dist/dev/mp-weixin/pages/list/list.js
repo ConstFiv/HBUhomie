@@ -483,7 +483,10 @@ var _gps = _interopRequireDefault(__webpack_require__(/*! @/uni_modules/json-gps
 //
 //
 //
-var cdbRef;var statusBar = function statusBar() {__webpack_require__.e(/*! require.ensure | uni_modules/uni-nav-bar/components/uni-nav-bar/uni-status-bar */ "uni_modules/uni-nav-bar/components/uni-nav-bar/uni-status-bar").then((function () {return resolve(__webpack_require__(/*! @/uni_modules/uni-nav-bar/components/uni-nav-bar/uni-status-bar */ 258));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var gps = new _gps.default(),db = uniCloud.database();var _default = { components: { statusBar: statusBar }, computed: { inputPlaceholder: function inputPlaceholder(e) {if (uni.getStorageSync('CURRENT_LANG') == "en") {return 'Please enter the search content';} else {return '请输入搜索内容';}}, colList: function colList() {return [db.collection('opendb-news-articles').where(this.where).field('avatar,title,last_modify_date,user_id').getTemp(), db.collection('uni-id-users').field('_id,username').getTemp()];} }, data: function data() {return { list: [{ src: "https://t7.baidu.com/it/u=1595072465,3644073269&fm=193&f=GIF", title: "全新电小二500W移动电源", price: '19800(测试数据开发中)', avatar: "@/static/myimgs/purple.jpg", userName: "不吃香菜的老王" }, { src: "https://t7.baidu.com/it/u=4036010509,3445021118&fm=193&f=GIF", title: "95新G435耳机 没怎么用就买到了新的", price: '350(测试数据开发中)', avatar: "@/static/myimgs/purple.jpg", userName: "不吃香菜的老王" }, { src: "https://t7.baidu.com/it/u=1415984692,3889465312&fm=193&f=GIF", title: "switchLite蓝色 18年买的", price: '1400(测试数据开发中)', avatar: "@/static/myimgs/purple.jpg", userName: "不吃香菜的老王" }, { src: "https://t7.baidu.com/it/u=3631608752,3069876728&fm=193&f=GIF", title: "代写毕业论文，有需要联系我", price: '1(测试数据开发中)', avatar: "@/static/myimgs/purple.jpg", userName: "不吃香菜的老王" }, { src: "https://t7.baidu.com/it/u=2621658848,3952322712&fm=193&f=GIF", title: "收一张内存条，要求3600的", price: '400(测试数据开发中)', avatar: "@/static/myimgs/purple.jpg", userName: "不吃香菜的老王" }, { src: "https://t7.baidu.com/it/u=4036010509,3445021118&fm=193&f=GIF", title: "全新电小二", price: '19800(测试数据开发中)', avatar: "@/static/myimgs/purple.jpg", userName: "不吃香菜的老王" }, { src: "https://t7.baidu.com/it/u=1415984692,3889465312&fm=193&f=GIF", title: "全新电小二", price: 19800, avatar: "@/static/myimgs/purple.jpg", userName: "不吃香菜的老王" }, { src: "https://t7.baidu.com/it/u=3631608752,3069876728&fm=193&f=GIF", title: "全新电小二", price: 19800, avatar: "@/static/myimgs/purple.jpg", userName: "不吃香菜的老王" }, { src: "https://t7.baidu.com/it/u=2621658848,3952322712&fm=193&f=GIF", title: "全新电小二", price: 19800, avatar: "@/static/myimgs/purple.jpg", userName: "不吃香菜的老王" }, { src: "https://t7.baidu.com/it/u=4036010509,3445021118&fm=193&f=GIF", title: "全新电小二", price: 19800, avatar: "@/static/myimgs/purple.jpg", userName: "不吃香菜的老王" }, { src: "https://t7.baidu.com/it/u=1415984692,3889465312&fm=193&f=GIF", title: "全新电小二", price: 19800, avatar: "@/static/myimgs/purple.jpg", userName: "不吃香菜的老王" }, { src: "https://t7.baidu.com/it/u=3631608752,3069876728&fm=193&f=GIF", title: "全新电小二", price: 19800, avatar: "@/static/myimgs/purple.jpg", userName: "不吃香菜的老王" }, { src: "https://t7.baidu.com/it/u=2621658848,3952322712&fm=193&f=GIF", title: "全新电小二", price: 19800, avatar: "@/static/myimgs/purple.jpg", userName: "不吃香菜的老王" }], leftList: [], rightList: [], leftH: 0, rightH: 0, where: '"article_status" == 1', keyword: "", showRefresh: false, listHight: 0 };}, watch: { keyword: function keyword(_keyword, oldValue) {var where = '"article_status" == 1 ';if (_keyword) {this.where = where + "&& /".concat(_keyword, "/.test(title)");} else {this.where = where;}} }, onReady: function onReady() {var _this = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:
+var cdbRef;var statusBar = function statusBar() {__webpack_require__.e(/*! require.ensure | uni_modules/uni-nav-bar/components/uni-nav-bar/uni-status-bar */ "uni_modules/uni-nav-bar/components/uni-nav-bar/uni-status-bar").then((function () {return resolve(__webpack_require__(/*! @/uni_modules/uni-nav-bar/components/uni-nav-bar/uni-status-bar */ 258));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var gps = new _gps.default(),db = uniCloud.database();var _default = { components: { statusBar: statusBar }, computed: { inputPlaceholder: function inputPlaceholder(e) {if (uni.getStorageSync('CURRENT_LANG') == "en") {return 'Please enter the search content';} else {return '请输入搜索内容';}}, colList: function colList() {return [db.collection('opendb-news-articles').where(this.where).field('avatar,title,last_modify_date,user_id').getTemp(), db.collection('uni-id-users').field('_id,username').getTemp()];} }, data: function data() {return { list: [{ src: "https://t7.baidu.com/it/u=1595072465,3644073269&fm=193&f=GIF", title: "全新电小二500W移动电源", price: '19800(测试数据开发中)', avatar: "./static/myimgs/purple.jpg", userName: "不吃香菜的老王" }, { src: "https://t7.baidu.com/it/u=4036010509,3445021118&fm=193&f=GIF", title: "95新G435耳机 没怎么用就买到了新的", price: '350(测试数据开发中)', avatar: "./static/myimgs/purple.jpg", userName: "不吃香菜的老王" }, { src: "https://t7.baidu.com/it/u=1415984692,3889465312&fm=193&f=GIF", title: "switchLite蓝色 18年买的", price: '1400(测试数据开发中)', avatar: "./static/myimgs/purple.jpg", userName: "不吃香菜的老王" }, { src: "https://t7.baidu.com/it/u=3631608752,3069876728&fm=193&f=GIF", title: "代写毕业论文，有需要联系我", price: '1(测试数据开发中)', avatar: "./static/myimgs/purple.jpg", userName: "不吃香菜的老王" }, { src: "https://t7.baidu.com/it/u=2621658848,3952322712&fm=193&f=GIF", title: "收一张内存条，要求3600的", price: '400(测试数据开发中)', avatar: "./static/myimgs/purple.jpg", userName: "不吃香菜的老王" }, { src: "https://t7.baidu.com/it/u=4036010509,3445021118&fm=193&f=GIF", title: "全新电小二", price: '19800(测试数据开发中)', avatar: "./static/myimgs/purple.jpg", userName: "不吃香菜的老王" }, { src: "https://t7.baidu.com/it/u=1415984692,3889465312&fm=193&f=GIF", title: "全新电小二", price: 19800, avatar: "./static/myimgs/purple.jpg", userName: "老刘真狗啊" }, { src: "https://t7.baidu.com/it/u=3631608752,3069876728&fm=193&f=GIF", title: "全新电小二", price: 19800, avatar: "./static/myimgs/purple.jpg", userName: "不吃香菜的老王" }, { src: "https://t7.baidu.com/it/u=2621658848,3952322712&fm=193&f=GIF", title: "全新电小二", price: 19800, avatar: "./static/myimgs/purple.jpg", userName: "不吃香菜的老王" }, { src: "https://t7.baidu.com/it/u=4036010509,3445021118&fm=193&f=GIF", title: "全新电小二", price: 19800, avatar: "./static/myimgs/purple.jpg", userName: "不吃香菜的老王" }, { src: "https://t7.baidu.com/it/u=1415984692,3889465312&fm=193&f=GIF", title: "全新电小二", price: 19800, avatar: "./static/myimgs/purple.jpg", userName: "不吃香菜的老王" }, { src: "https://t7.baidu.com/it/u=3631608752,3069876728&fm=193&f=GIF", title: "全新电小二", price: 19800, avatar: "./static/myimgs/purple.jpg", userName: "不吃香菜的老王" }, { src: "https://t7.baidu.com/it/u=2621658848,3952322712&fm=193&f=GIF", title: "全新电小二", price: 19800, avatar: "./static/myimgs/purple.jpg", userName: "不吃香菜的老王" }], leftList: [], rightList: [], leftH: 0, rightH: 0, where: '"article_status" == 1', keyword: "", showRefresh: false, listHight: 0, // 瀑布流请求的次数
+      requestTime: 0 };}, watch: { keyword: function keyword(_keyword, oldValue) {var where = '"article_status" == 1 ';if (_keyword) {this.where = where + "&& /".concat(_keyword, "/.test(title)");} else {this.where = where;}} }, onReady: function onReady() {var _this = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:
+
+
 
               _this.listHight = 'auto';
 
@@ -513,7 +516,8 @@ var cdbRef;var statusBar = function statusBar() {__webpack_require__.e(/*! requi
               // uni.hideLoading()
             case 6:case "end":return _context2.stop();}}}, _callee2);}))();},
   onLoad: function onLoad() {
-    this.doList();
+    // this.doList()
+    this.getCardsInfo();
   },
   methods: {
     // 处理瀑布流
@@ -542,11 +546,25 @@ var cdbRef;var statusBar = function statusBar() {__webpack_require__.e(/*! requi
       });
     },
 
+    // 获取卡片中的内容
+    getCardsInfo: function getCardsInfo() {var _this3 = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee3() {var secondHandList, res;return _regenerator.default.wrap(function _callee3$(_context3) {while (1) {switch (_context3.prev = _context3.next) {case 0:
+                secondHandList = uniCloud.importObject('secondHandList');_context3.next = 3;return (
+                  secondHandList.getCardsInfo(_this3.requestTime));case 3:res = _context3.sent;
+                console.log("获取卡片中的内容", res);
+                if (res.errCode == 0) {
+                  _this3.requestTime = _this3.requestTime + 1;
+                  _this3.list = res.data;
+                  _this3.doList();
+                }case 6:case "end":return _context3.stop();}}}, _callee3);}))();
+
+    },
+
+
 
 
     // 点击卡片
     cardHandleClick: function cardHandleClick(item) {
-      this.$router.push('/pages/list/detail?id=' + item.price + '&title=' + item.title);
+      this.$router.push('/pages/list/detail?id=' + item._id + '&title=' + item.title);
     },
 
 
@@ -561,20 +579,9 @@ var cdbRef;var statusBar = function statusBar() {__webpack_require__.e(/*! requi
     retry: function retry() {
       this.refresh();
     },
-    refresh: function refresh() {
-      cdbRef.loadData({
-        clear: true },
-      function () {
-        uni.stopPullDownRefresh();
 
-
-
-        console.log('end');
-      });
-      console.log('refresh');
-    },
     loadMore: function loadMore() {
-      cdbRef.loadMore();
+      this.getCardsInfo();
     },
     onqueryerror: function onqueryerror(e) {
       console.error(e);
