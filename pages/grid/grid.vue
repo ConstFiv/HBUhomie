@@ -23,7 +23,7 @@
 		
 		
 	<!-- 宫格 -->
-		<uni-section :title="$t('grid.grid')" style="margin: 0;" type="line"></uni-section>
+		<uni-section title="发布信息" style="margin: 0;" type="line"></uni-section>
 		<view class="example-body">
 			<uni-grid :column="3" :highlight="true" @change="change">
 				<template v-for="(item,i) in gridList">
@@ -31,8 +31,8 @@
 						v-if="i<3 || i>2&&i<6&&hasLogin || i>5&&uniIDHasRole('admin')"
 					>
 						<view class="grid-item-box" style="background-color: #fff;">
-							<image :src="'/static/grid/c'+(i+1)+'.png'" class="image" mode="aspectFill" />
-							<text class="text">{{item}}</text>
+							<image :src="item.src" class="image" mode="aspectFill" />
+							<text class="text">{{item.title}}</text>
 						</view>
 					</uni-grid-item>
 				</template>
@@ -52,7 +52,14 @@
 		},
 		data() {
 			return {
-				gridList: [],
+				gridList: [
+					{src:'https://img2.baidu.com/it/u=3895119537,2684520677&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500',
+					title:"发布闲置"},
+					{src:'https://img2.baidu.com/it/u=3895119537,2684520677&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500',
+					title:"失物招领"},
+					{src:'https://img2.baidu.com/it/u=3895119537,2684520677&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500',
+					title:"（开发中。。）"},
+				],
 				current: 0,
 				swiperDotIndex: 0
 			}
@@ -63,17 +70,17 @@
 			})
 		},
 		onLoad() {
-			let gridList = []
-			for (var i = 0; i < 3; i++) {
-				gridList.push( this.$t('grid.visibleToAll') )
-			}
-			for (var i = 0; i < 3; i++) {
-				gridList.push( this.$t('grid.invisibleToTourists') )
-			}
-			for (var i = 0; i < 3; i++) {
-				gridList.push( this.$t('grid.adminVisible') )
-			}
-			this.gridList = gridList
+			// let gridList = []
+			// for (var i = 0; i < 3; i++) {
+			// 	gridList.push( this.$t('grid.visibleToAll') )
+			// }
+			// for (var i = 0; i < 3; i++) {
+			// 	gridList.push( this.$t('grid.invisibleToTourists') )
+			// }
+			// for (var i = 0; i < 3; i++) {
+			// 	gridList.push( this.$t('grid.adminVisible') )
+			// }
+			// this.gridList = gridList
 		},
 		methods: {
 			change(e) {
