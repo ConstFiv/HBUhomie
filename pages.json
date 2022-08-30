@@ -170,6 +170,13 @@
 				"navigationBarTitleText": "意见反馈",
 				"enablePullDownRefresh": false
 			}
+		},
+		{
+			"path": "pages/post/secondHandPost/index",
+			"style": {
+				"navigationBarTitleText": "发布闲置",
+				"enablePullDownRefresh": false
+			}
 		}
     ],
 	"globalStyle": {

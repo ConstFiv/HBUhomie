@@ -89,7 +89,16 @@
 				// 	title:this.$t('grid.clickTip') + " " + `${e.detail.index}` + " " + this.$t('grid.clickTipGrid'),
 				// 	icon: 'none'
 				// })
-				this.$router.push('/pages/list/detail?id='+item._id+'&title='+item.title)
+
+				// 点击了发布闲置
+				if(e.detail.index == 0){
+					this.$router.push("/pages/post/secondHandPost/index")
+				//点击了失物招领
+				}else if(e.detail.index == 1){
+					
+				}
+				
+				
 			},
 			/**
 			 * banner加载后触发的回调
