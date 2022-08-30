@@ -13,10 +13,11 @@
 				</uni-forms-item>
 				<uni-file-picker
 					v-model="imageValue"  
+					:imageStyles="imageStyles"
+						title="上传图片"
 						file-mediatype="image"
 						mode="grid"
-						file-extname="png,jpg"
-						:limit="9"
+						:limit="3"
 						@progress="progress" 
 						@success="success" 
 						@fail="fail" 
@@ -35,14 +36,14 @@
 		export default {
 			data() {
 				return {
-					imageValue:[
-						{
-							"name":"file.txt",
-							"extname":"txt",
-							"url":"https://xxxx",
-			
-						}
-					],
+					imageValue:[],
+					imageStyles: {
+								width: 64,
+								height: 64,
+								border: {
+									radius: '50%'
+								}
+								},
 					formData:{},
 					
 					// 进行表单校验
@@ -54,9 +55,13 @@
 							]
 						},
 				
-						title: {
-							rules: [{required: true,errorMessage: '请输入标题'},
-								{minLength: 1,maxLength:10,errorMessage: '姓名长度在 {minLength} 到 {maxLength} 个字符',}
+						detail: {
+							rules: [{required: true,errorMessage: '请输入宝贝详情'}
+							]
+						},
+						
+						price: {
+							rules: [{required: true,errorMessage: '请输入宝贝价格'}
 							]
 						},
 					},
@@ -75,17 +80,25 @@
 				
 				// 上传成功
 				success(e){
-					console.log('上传成功',e)
+					this.formData['src'] = e.tempFilePaths["0"]
+					console.log(e.tempFilePaths["0"])
+					console.log(this.imageValue)
 				},
 				
 				// 上传失败
 				fail(e){
+					
 					console.log('上传失败：',e)
 				},
 				
 				// 提交
-				submitForm(){
-						
+				async submitForm(){
+					this.formData["imgList"] = this.imageValue
+					const secondHandList = uniCloud.importObject('secondHandList')
+					let res = await secondHandList.addCardInfo(this.formData)
+					if(res.errCode==0){
+						this.$router.push("/")
+					}
 				},
 			}
 		}
