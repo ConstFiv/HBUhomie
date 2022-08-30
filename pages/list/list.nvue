@@ -98,8 +98,8 @@
 				<uni-list-item>
 					<template v-slot:body>
 						<!-- #endif -->
-						<uni-load-state @networkResume="refresh" :state="{data,pagination,hasMore, loading, error}"
-							@loadMore="loadMore">
+						<uni-load-state @networkResume="getCardsInfo" :state="{data,pagination,hasMore, loading, error}"
+							@loadMore="getCardsInfo">
 						</uni-load-state>
 						<!-- #ifdef APP-PLUS -->
 					</template>
@@ -241,7 +241,10 @@
 				where: '"article_status" == 1',
 				keyword: "",
 				showRefresh: false,
-				listHight: 0
+				listHight: 0,
+				
+				// 瀑布流请求的次数
+				requestTime:0,
 			}
 		},
 		watch: {
@@ -322,8 +325,10 @@
 			// 获取卡片中的内容
 			async getCardsInfo(){
 				const secondHandList = uniCloud.importObject('secondHandList')
-				let res = await secondHandList.getCardsInfo()
+				let res = await secondHandList.getCardsInfo(this.requestTime)
+				console.log("获取卡片中的内容",res)
 				if(res.errCode==0){
+					this.requestTime = this.requestTime+1
 					this.list = res.data
 					this.doList()
 				}
@@ -335,7 +340,7 @@
 			
 			// 点击卡片
 			cardHandleClick(item){
-				this.$router.push('/pages/list/detail?id='+item.price+'&title='+item.title)
+				this.$router.push('/pages/list/detail?id='+item._id+'&title='+item.title)
 			},
 
 
@@ -350,20 +355,9 @@
 			retry() {
 				this.refresh()
 			},
-			refresh() {
-				cdbRef.loadData({
-					clear: true
-				}, () => {
-					uni.stopPullDownRefresh()
-					// #ifdef APP-NVUE
-					this.showRefresh = false
-					// #endif
-					console.log('end');
-				})
-				console.log('refresh');
-			},
+			
 			loadMore() {
-				cdbRef.loadMore()
+				this.getCardsInfo()
 			},
 			onqueryerror(e) {
 				console.error(e);
