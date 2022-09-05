@@ -92,7 +92,8 @@
 
 				// 点击了发布闲置
 				if(e.detail.index == 0){
-					this.$router.push("/pages/post/secondHandPost/index")
+					wx.redirectTo({url:"/pages/post/secondHandPost/index"})
+					// this.$router.push("/pages/post/secondHandPost/index")
 				//点击了失物招领
 				}else if(e.detail.index == 1){
 					

@@ -21,7 +21,8 @@
     "pages/ucenter/read-news-log/read-news-log",
     "pages/ucenter/invite/invite",
     "pages/ucenter/settings/deactivate/deactivate",
-    "uni_modules/uni-feedback/pages/opendb-feedback/opendb-feedback"
+    "uni_modules/uni-feedback/pages/opendb-feedback/opendb-feedback",
+    "pages/post/secondHandPost/index"
   ],
   "subPackages": [],
   "window": {

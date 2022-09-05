@@ -71,23 +71,18 @@
 			methods:{
 				// 获取上传状态
 				select(e){
-					// console.log('选择文件：',e)
 				},
 				// 获取上传进度
 				progress(e){
-					// console.log('上传进度：',e)
 				},
 				
 				// 上传成功
 				success(e){
-					this.formData['src'] = e.tempFilePaths["0"]
-					console.log(e.tempFilePaths["0"])
-					console.log(this.imageValue)
+					this.formData['src'] = e.tempFilePaths["0"] || null
 				},
 				
 				// 上传失败
 				fail(e){
-					
 					console.log('上传失败：',e)
 				},
 				

@@ -1,6 +1,0 @@
-{
-  "navigationBarTitleText": "关于",
-  "usingComponents": {
-    "sansnn-u-q-r-code": "/components/Sansnn-uQRCode/Sansnn-uQRCode"
-  }
-}
