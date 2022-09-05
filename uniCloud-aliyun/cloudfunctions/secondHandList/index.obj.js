@@ -25,7 +25,6 @@ function repair(i){
 
 
 module.exports = {
-	
 	// 获取全部二手列表信息  @requestTime请求次数
 	async getCardsInfo(requestTime){
 		if(requestTime==undefined || requestTime==null){
@@ -37,7 +36,9 @@ module.exports = {
 		}
 		
 		const db = uniCloud.database()
-		const cardsInfoData = db.collection('fiv-sale-list').skip(10*requestTime).limit(10)
+		const cardsInfoData = db.collection('fiv-test-list')
+		.skip(10*requestTime)
+		.limit(10)
 		let  res = await cardsInfoData.get()
 		if(res){
 			res.errCode = 0
@@ -65,7 +66,7 @@ module.exports = {
 		
 		console.log("testData",testData)
 		const db = uniCloud.database()
-		let res = await db.collection('fiv-sale-list').add(testData)
+		let res = await db.collection('fiv-test-list').add(testData)
 		console.log("aasdasdasdasd",res)
 		if(res){
 			res.errCode = 0
@@ -79,5 +80,25 @@ module.exports = {
 			}
 		}
 		
-	}
+	},
+	
+	
+	// 根据ID获取某个卡片的详情
+	async getCardDetail(obj){
+		const db = uniCloud.database()
+		const cardsDetailData = db.collection('fiv-test-list').where({_id : obj.id})
+		let res = cardsDetailData.get()
+		console.log("数据库返回的结果",res)
+		// if(res){
+		res.errCode = 0
+		return res
+		// }else{
+		// 	return {
+		// 		errCode:-1,
+		// 		message:"数据库查询错误",
+		// 		data:[],
+		// 	}
+		// }
+		
+	},
 }
