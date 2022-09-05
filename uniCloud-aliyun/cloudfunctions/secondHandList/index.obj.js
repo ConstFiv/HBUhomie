@@ -12,7 +12,7 @@ module.exports = {
 		}
 		
 		const db = uniCloud.database()
-		const cardsInfoData = db.collection('fiv-sale-list').skip(5*requestTime).limit(5)
+		const cardsInfoData = db.collection('fiv-sale-list').skip(10*requestTime).limit(10)
 		let  res = await cardsInfoData.get()
 		if(res){
 			res.errCode = 0
