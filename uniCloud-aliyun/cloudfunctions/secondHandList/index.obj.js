@@ -87,18 +87,17 @@ module.exports = {
 	async getCardDetail(obj){
 		const db = uniCloud.database()
 		const cardsDetailData = db.collection('fiv-test-list').where({_id : obj.id})
-		let res = cardsDetailData.get()
-		console.log("数据库返回的结果",res)
-		// if(res){
-		res.errCode = 0
-		return res
-		// }else{
-		// 	return {
-		// 		errCode:-1,
-		// 		message:"数据库查询错误",
-		// 		data:[],
-		// 	}
-		// }
+		let res = await cardsDetailData.get()
+		if(res){
+			res.errCode = 0
+			return res
+		}else{
+			return {
+				errCode:-1,
+				message:"数据库查询错误",
+				data:[],
+			}
+		}
 		
 	},
 }
