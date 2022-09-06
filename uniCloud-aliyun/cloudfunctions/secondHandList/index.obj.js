@@ -67,7 +67,6 @@ module.exports = {
 		console.log("testData",testData)
 		const db = uniCloud.database()
 		let res = await db.collection('fiv-test-list').add(testData)
-		console.log("aasdasdasdasd",res)
 		if(res){
 			res.errCode = 0
 			return res
@@ -90,6 +89,7 @@ module.exports = {
 		let res = await cardsDetailData.get()
 		if(res){
 			res.errCode = 0
+			res.data = res.data[0]
 			return res
 		}else{
 			return {

@@ -1,19 +1,29 @@
 <template>
 	<view>
-		{{id}}
+		<div class="topBar">
+			<img class="avatar"  :src="cardData.avatar" alt="">
+			<div class="userName">{{cardData.userName}}</div>
+		</div>
+		<div class="priceBar">
+			<span style="font-size: 14rpx;"> ￥</span>{{cardData.price}}
+		</div>
+		<div class="contentPlace">
+			<div class="detail">
+				{{cardData.detail}}
+			</div>
+		</div>
 	</view>
 </template>
 
 <script>
 	export default{
 		data(){return{
-			id:"",
+			cardData:"",
 		}},
 		
 		// 进入页面
 		onLoad(event) {
 			if (event.id) {
-				this.id = event.id
 				this.getCardDetail(event.id)
 			}
 			
@@ -23,14 +33,12 @@
 		methods:{
 			 // 获取卡片的详情
 			 async getCardDetail(id){
-				 let obj = {id:""}
-				 obj.id = id
 			 	const secondHandList = uniCloud.importObject('secondHandList')
-			 	let res = await secondHandList.getCardDetail(obj)
+			 	let res = await secondHandList.getCardDetail({id:id})
 				console.log("aaaaaaaaaaaaaa",res)
 			 	if(res.errCode==0){
 					console.log("aaaaaaaaaaaaaa",res.data)
-					this.id = res.data
+					this.cardData = res.data
 			 	}
 			 	
 			 },
@@ -38,6 +46,48 @@
 	}
 </script>
 
-<style scoped>
+<style scoped lang="scss">
+	.topBar{
+		height: 100rpx;
+		width: 100%;
+		.avatar{
+			height: 60rpx;
+			width: 60rpx;
+			margin: 20rpx 20rpx 0 20rpx;
+			border-radius: 50%;
+			float: left;
+		}
+		.userName{
+			font-size: 20rpx;
+			font-weight: 900;
+			line-height: 100rpx;
+			float: left;
+		}
+	}	
 	
+	.priceBar{
+		height: 50rpx;
+		width: 100%;
+		font-size: 30rpx;
+		font-weight: 900;
+		line-height: 50rpx;
+		color: red;
+		padding-left:20rpx ;
+	
+	}
+	
+	.contentPlace{
+		width: 100%;	
+		padding: 0 20rpx;
+		box-sizing: border-box;
+		.detail{
+			background-color: antiquewhite;
+			min-height: 200rpx;
+			width: 100%;
+			font-size: 16rpx;
+			line-height: 20rpx;
+			
+
+		}
+	}
 </style>
