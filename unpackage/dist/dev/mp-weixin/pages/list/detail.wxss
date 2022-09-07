@@ -69,13 +69,8 @@
   overflow: hidden;
   border-radius: 10rpx;
 }
-.contentPlace .imageOutSider .img1.data-v-ed2c8c0e {
+.contentPlace .imageOutSider ._img.data-v-ed2c8c0e {
   width: 100%;
-}
-.contentPlace .imageOutSider .img2.data-v-ed2c8c0e {
-  width: 45%;
-  float: left;
-  margin-right: 5%;
 }
 .blankPlace.data-v-ed2c8c0e {
   height: 300rpx;

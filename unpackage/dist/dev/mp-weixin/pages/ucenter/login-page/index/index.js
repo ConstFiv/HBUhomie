@@ -98,10 +98,10 @@ var components
 try {
   components = {
     uniAgreements: function() {
-      return __webpack_require__.e(/*! import() | components/uni-agreements/uni-agreements */ "components/uni-agreements/uni-agreements").then(__webpack_require__.bind(null, /*! @/components/uni-agreements/uni-agreements.vue */ 299))
+      return __webpack_require__.e(/*! import() | components/uni-agreements/uni-agreements */ "components/uni-agreements/uni-agreements").then(__webpack_require__.bind(null, /*! @/components/uni-agreements/uni-agreements.vue */ 301))
     },
     uniQuickLogin: function() {
-      return Promise.all(/*! import() | components/uni-quick-login/uni-quick-login */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/uni-quick-login/uni-quick-login")]).then(__webpack_require__.bind(null, /*! @/components/uni-quick-login/uni-quick-login.vue */ 306))
+      return Promise.all(/*! import() | components/uni-quick-login/uni-quick-login */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/uni-quick-login/uni-quick-login")]).then(__webpack_require__.bind(null, /*! @/components/uni-quick-login/uni-quick-login.vue */ 308))
     }
   }
 } catch (e) {

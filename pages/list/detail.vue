@@ -103,14 +103,10 @@
 			width: 100%;
 			overflow: hidden;
 			border-radius: 10rpx;
-			.img1{
+			img{
 				width: 100%;
 			}
-			.img2{
-				width: 45%;
-				float: left;
-				margin-right: 5%;
-			}
+			
 			
 			
 		}

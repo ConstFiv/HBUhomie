@@ -98,13 +98,13 @@ var components
 try {
   components = {
     uniEasyinput: function() {
-      return __webpack_require__.e(/*! import() | uni_modules/uni-easyinput/components/uni-easyinput/uni-easyinput */ "uni_modules/uni-easyinput/components/uni-easyinput/uni-easyinput").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-easyinput/components/uni-easyinput/uni-easyinput.vue */ 331))
+      return __webpack_require__.e(/*! import() | uni_modules/uni-easyinput/components/uni-easyinput/uni-easyinput */ "uni_modules/uni-easyinput/components/uni-easyinput/uni-easyinput").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-easyinput/components/uni-easyinput/uni-easyinput.vue */ 333))
     },
     uniSendSmsCode: function() {
-      return __webpack_require__.e(/*! import() | components/uni-send-sms-code/uni-send-sms-code */ "components/uni-send-sms-code/uni-send-sms-code").then(__webpack_require__.bind(null, /*! @/components/uni-send-sms-code/uni-send-sms-code.vue */ 338))
+      return __webpack_require__.e(/*! import() | components/uni-send-sms-code/uni-send-sms-code */ "components/uni-send-sms-code/uni-send-sms-code").then(__webpack_require__.bind(null, /*! @/components/uni-send-sms-code/uni-send-sms-code.vue */ 340))
     },
     uniPopupCaptcha: function() {
-      return __webpack_require__.e(/*! import() | uni_modules/uni-captcha/components/uni-popup-captcha/uni-popup-captcha */ "uni_modules/uni-captcha/components/uni-popup-captcha/uni-popup-captcha").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-captcha/components/uni-popup-captcha/uni-popup-captcha.vue */ 345))
+      return __webpack_require__.e(/*! import() | uni_modules/uni-captcha/components/uni-popup-captcha/uni-popup-captcha */ "uni_modules/uni-captcha/components/uni-popup-captcha/uni-popup-captcha").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-captcha/components/uni-popup-captcha/uni-popup-captcha.vue */ 347))
     }
   }
 } catch (e) {
