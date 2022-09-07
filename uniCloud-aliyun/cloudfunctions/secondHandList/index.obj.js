@@ -26,7 +26,7 @@ function repair(i){
 
 module.exports = {
 	// 获取全部二手列表信息  @requestTime请求次数
-	async getCardsInfo(requestTime){
+	async getCardsInfo(requestTime,searchText){
 		if(requestTime==undefined || requestTime==null){
 			return {
 				errCode:-1,
@@ -35,8 +35,30 @@ module.exports = {
 			}
 		}
 		
+		console.log("searchText",searchText)
 		const db = uniCloud.database()
+		// 普通查询
+		if(!searchText){
+			const cardsInfoData = db.collection('fiv-test-list')
+			.skip(10*requestTime)
+			.limit(10)
+			let  res = await cardsInfoData.get()
+			if(res){
+				res.errCode = 0
+				return res
+			
+			}else{
+				return {
+					errCode:-1,
+					message:"数据库查询错误",
+					data:[],
+				}
+			}
+		}else{
+		// 条件查询
+		var find = {title: new RegExp(searchText)}
 		const cardsInfoData = db.collection('fiv-test-list')
+		.where(find)
 		.skip(10*requestTime)
 		.limit(10)
 		let  res = await cardsInfoData.get()
@@ -52,7 +74,15 @@ module.exports = {
 			}
 		}
 		
+		}
+		
+		
 	},
+	
+	
+
+	
+	
 	
 	
 	// 上传新的二手资料

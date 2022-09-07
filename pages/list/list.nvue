@@ -205,13 +205,8 @@
 		// 进入界面
 		onLoad() {
 			console.log("进入界面",getApp().globalData.searchText)
-			if(!getApp().globalData.searchText){
-				// 请求正常序列的
-				this.getCardsInfo()
-			}else{
-				// 进行搜索
-				this.searchCardsInfo(getApp().globalData.searchText)
-			}
+			this.getCardsInfo()
+			
 			
 		},
 	
@@ -245,7 +240,7 @@
 			// 获取卡片中的内容
 			async getCardsInfo(){
 				const secondHandList = uniCloud.importObject('secondHandList')
-				let res = await secondHandList.getCardsInfo(this.requestTime)
+				let res = await secondHandList.getCardsInfo(this.requestTime,getApp().globalData.searchText)
 				if(res.errCode==0){
 					this.requestTime = this.requestTime+1
 					this.list = res.data
