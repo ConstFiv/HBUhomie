@@ -1,6 +1,6 @@
 <template>
 
-		<view class="">
+		<view class="formOutSider">
 			<uni-forms :rules="rules" :modelValue="formData" label-position="top" style="margin: 0 20rpx;">
 				<uni-forms-item required label="闲置标题" name="title">
 					<uni-easyinput type="text" v-model="formData.title" placeholder="请输入标题" />
@@ -114,5 +114,7 @@
 		}
 	</script>
 <style scoped>
-
+.formOutSider{
+	margin: 0 20rpx;
+}
 </style>

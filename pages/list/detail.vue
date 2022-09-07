@@ -71,7 +71,7 @@
 			float: left;
 		}
 		.userName{
-			font-size: 20rpx;
+			font-size: 25rpx;
 			font-weight: 900;
 			line-height: 100rpx;
 			float: left;

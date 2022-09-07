@@ -39,7 +39,7 @@
   float: left;
 }
 .topBar .userName.data-v-ed2c8c0e {
-  font-size: 20rpx;
+  font-size: 25rpx;
   font-weight: 900;
   line-height: 100rpx;
   float: left;
