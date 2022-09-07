@@ -155,6 +155,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 var _default =
 {
   data: function data() {return {
@@ -175,11 +179,9 @@ var _default =
     getCardDetail: function getCardDetail(id) {var _this = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var secondHandList, res;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:
                 secondHandList = uniCloud.importObject('secondHandList');_context.next = 3;return (
                   secondHandList.getCardDetail({ id: id }));case 3:res = _context.sent;
-                console.log("aaaaaaaaaaaaaa", res);
                 if (res.errCode == 0) {
-                  console.log("aaaaaaaaaaaaaa", res.data);
                   _this.cardData = res.data;
-                }case 6:case "end":return _context.stop();}}}, _callee);}))();
+                }case 5:case "end":return _context.stop();}}}, _callee);}))();
 
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/vue-cli-plugin-uni/packages/uni-cloud/dist/index.js */ 6)["default"]))

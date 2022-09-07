@@ -342,7 +342,8 @@
 		z-index: 9;
 		/* #endif */
 		/* #ifdef MP-WEIXIN */
-		width: 580rpx;
+		// width: 580rpx;
+		width: 100%;
 		/* #endif */
 	}
 

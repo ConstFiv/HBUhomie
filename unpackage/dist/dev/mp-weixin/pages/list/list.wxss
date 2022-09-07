@@ -94,7 +94,7 @@ view.data-v-2e5f5418 {
   top: 0;
   left: 0;
   z-index: 9;
-  width: 580rpx;
+  width: 100%;
 }
 .cover-search-bar.data-v-2e5f5418 {
   height: 50px;

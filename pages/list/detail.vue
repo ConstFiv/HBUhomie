@@ -11,12 +11,16 @@
 			<div class="detail"> 
 				{{cardData.detail}}
 			</div>
-			<div class="imageOutSider">
-				<div v-for="(item,index) in cardData.imgList" :key="'img'+index">
-					<img  :src="item.path" alt="">
-				</div>
-					
+			<div class="imageOutSider">		
+					<img  v-for="(item,index) in cardData.imgList" :key="'img'+index"  :src="item.path" alt="">
+
 			</div>
+			
+		</div>
+		
+		<div class="blankPlace"></div>
+		<div class="bottomBar">
+			<div class="btnBottom">我想要</div>
 		</div>
 	</view>
 </template>
@@ -41,9 +45,7 @@
 			 async getCardDetail(id){
 			 	const secondHandList = uniCloud.importObject('secondHandList')
 			 	let res = await secondHandList.getCardDetail({id:id})
-				console.log("aaaaaaaaaaaaaa",res)
 			 	if(res.errCode==0){
-					console.log("aaaaaaaaaaaaaa",res.data)
 					this.cardData = res.data
 			 	}
 			 	
@@ -101,18 +103,41 @@
 			width: 100%;
 			overflow: hidden;
 			border-radius: 10rpx;
-			img{
+			.img1{
 				width: 100%;
 			}
-			.lineTwo{
-				display: flex;
-				flex-direction: row;
-				flex-wrap: nowrap;
-				img{
-					width: 100%;
-					
-				}
+			.img2{
+				width: 45%;
+				float: left;
+				margin-right: 5%;
 			}
+			
+			
 		}
 	}
+
+	.blankPlace{
+		height: 300rpx;
+	}
+	.bottomBar{
+		height: 120rpx;
+		width: 100%;
+		position: fixed;
+		bottom: 0;
+		left: 0;
+		.btnBottom{
+			box-sizing: border-box;
+			height: 70rpx;
+			float: right;
+			padding: 10rpx 30rpx;
+			line-height: 50rpx;
+			font-size: 34rpx;
+			color: #fff;
+			font-weight: 900;
+			background-color: rgb(255,230,15);
+			border-radius: 20rpx;
+			margin: 25rpx 40rpx 0 0 ;
+		}
+	}
+
 </style>
