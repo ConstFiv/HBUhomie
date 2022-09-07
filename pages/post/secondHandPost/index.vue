@@ -69,6 +69,11 @@
 			
 			
 			methods:{
+				// 清除表单残留
+				clear(){
+					this.imageValue = []
+					this.formData = {}
+				},
 				// 获取上传状态
 				select(e){
 				},
@@ -92,14 +97,20 @@
 					const secondHandList = uniCloud.importObject('secondHandList')
 					let res = await secondHandList.addCardInfo(this.formData)
 					if(res.errCode==0){
-						// this.$router.push("/")
-						uni.navigateTo({
-							url: "/",
+						this.clear()
+						uni.showToast({
+							title:"提交成功！",
+							duration:1000,
+						})
+						uni.switchTab({
+							url: "/pages/list/list",
 							animationType: 'fade-in'
 						})
 					}
 				},
-			}
+				},
+				
+				
 		}
 	</script>
 <style scoped>

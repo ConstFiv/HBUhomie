@@ -233,6 +233,11 @@ var _default =
 
 
   methods: {
+    // 清除表单残留
+    clear: function clear() {
+      this.imageValue = [];
+      this.formData = {};
+    },
     // 获取上传状态
     select: function select(e) {
     },
@@ -256,9 +261,13 @@ var _default =
                 secondHandList = uniCloud.importObject('secondHandList');_context.next = 4;return (
                   secondHandList.addCardInfo(_this.formData));case 4:res = _context.sent;
                 if (res.errCode == 0) {
-                  // this.$router.push("/")
-                  uni.navigateTo({
-                    url: "/",
+                  _this.clear();
+                  uni.showToast({
+                    title: "提交成功！",
+                    duration: 1000 });
+
+                  uni.switchTab({
+                    url: "/pages/list/list",
                     animationType: 'fade-in' });
 
                 }case 6:case "end":return _context.stop();}}}, _callee);}))();
