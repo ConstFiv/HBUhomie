@@ -76,23 +76,35 @@
 				},
 				// 获取上传状态
 				select(e){
+					console.log('选择文件：',e)
+					
+					uni.showLoading({
+					    title: '图片正在压缩上传...'
+					})
+							
 				},
 				// 获取上传进度
 				progress(e){
+					
 				},
 				
 				// 上传成功
 				success(e){
-					this.formData['src'] = e.tempFilePaths["0"] || null
+					this.formData['src'] = e.tempFilePaths["0"] || null					
+					uni.hideLoading();
 				},
 				
 				// 上传失败
 				fail(e){
+					uni.hideLoading();
 					console.log('上传失败：',e)
 				},
 				
 				// 提交
 				async submitForm(){
+					uni.showLoading({
+					    title: '正在提交数据...'
+					})
 					this.formData["imgList"] = this.imageValue
 					const secondHandList = uniCloud.importObject('secondHandList')
 					let res = await secondHandList.addCardInfo(this.formData)
@@ -102,6 +114,7 @@
 							title:"提交成功！",
 							duration:1000,
 						})
+						uni.hideLoading();
 						uni.switchTab({
 							url: "/pages/list/list",
 							animationType: 'fade-in'
