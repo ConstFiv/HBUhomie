@@ -92,7 +92,11 @@
 					const secondHandList = uniCloud.importObject('secondHandList')
 					let res = await secondHandList.addCardInfo(this.formData)
 					if(res.errCode==0){
-						this.$router.push("/")
+						// this.$router.push("/")
+						uni.navigateTo({
+							url: "/",
+							animationType: 'fade-in'
+						})
 					}
 				},
 			}

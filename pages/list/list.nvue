@@ -140,98 +140,7 @@
 		},
 		data() {
 			return {
-				list: [{
-						src: "https://t7.baidu.com/it/u=1595072465,3644073269&fm=193&f=GIF",
-						title: "全新电小二500W移动电源",
-						price: '19800(测试数据开发中)',
-						avatar: "./static/myimgs/purple.jpg",
-						userName: "不吃香菜的老王",
-					},
-					{
-						src: "https://t7.baidu.com/it/u=4036010509,3445021118&fm=193&f=GIF",
-						title: "95新G435耳机 没怎么用就买到了新的",
-						price: '350(测试数据开发中)',
-						avatar: "./static/myimgs/purple.jpg",
-						userName: "不吃香菜的老王",
-					},
-					{
-						src: "https://t7.baidu.com/it/u=1415984692,3889465312&fm=193&f=GIF",
-						title: "switchLite蓝色 18年买的",
-						price: '1400(测试数据开发中)',
-						avatar: "./static/myimgs/purple.jpg",
-						userName: "不吃香菜的老王",
-					},
-					{
-						src: "https://t7.baidu.com/it/u=3631608752,3069876728&fm=193&f=GIF",
-						title: "代写毕业论文，有需要联系我",
-						price: '1(测试数据开发中)',
-						avatar: "./static/myimgs/purple.jpg",
-						userName: "不吃香菜的老王",
-					},
-					{
-						src: "https://t7.baidu.com/it/u=2621658848,3952322712&fm=193&f=GIF",
-						title: "收一张内存条，要求3600的",
-						price: '400(测试数据开发中)',
-						avatar: "./static/myimgs/purple.jpg",
-						userName: "不吃香菜的老王",
-					},
-					{
-						src: "https://t7.baidu.com/it/u=4036010509,3445021118&fm=193&f=GIF",
-						title: "全新电小二",
-						price: '19800(测试数据开发中)',
-						avatar: "./static/myimgs/purple.jpg",
-						userName: "不吃香菜的老王",
-					},
-					{
-						src: "https://t7.baidu.com/it/u=1415984692,3889465312&fm=193&f=GIF",
-						title: "全新电小二",
-						price: 19800,
-						avatar: "./static/myimgs/purple.jpg",
-						userName: "老刘真狗啊",
-					},
-					{
-						src: "https://t7.baidu.com/it/u=3631608752,3069876728&fm=193&f=GIF",
-						title: "全新电小二",
-						price: 19800,
-						avatar: "./static/myimgs/purple.jpg",
-						userName: "不吃香菜的老王",
-					},
-					{
-						src: "https://t7.baidu.com/it/u=2621658848,3952322712&fm=193&f=GIF",
-						title: "全新电小二",
-						price: 19800,
-						avatar: "./static/myimgs/purple.jpg",
-						userName: "不吃香菜的老王",
-					},
-					{
-						src: "https://t7.baidu.com/it/u=4036010509,3445021118&fm=193&f=GIF",
-						title: "全新电小二",
-						price: 19800,
-						avatar: "./static/myimgs/purple.jpg",
-						userName: "不吃香菜的老王",
-					},
-					{
-						src: "https://t7.baidu.com/it/u=1415984692,3889465312&fm=193&f=GIF",
-						title: "全新电小二",
-						price: 19800,
-						avatar: "./static/myimgs/purple.jpg",
-						userName: "不吃香菜的老王",
-					},
-					{
-						src: "https://t7.baidu.com/it/u=3631608752,3069876728&fm=193&f=GIF",
-						title: "全新电小二",
-						price: 19800,
-						avatar: "./static/myimgs/purple.jpg",
-						userName: "不吃香菜的老王",
-					},
-					{
-						src: "https://t7.baidu.com/it/u=2621658848,3952322712&fm=193&f=GIF",
-						title: "全新电小二",
-						price: 19800,
-						avatar: "./static/myimgs/purple.jpg",
-						userName: "不吃香菜的老王",
-					},
-				],
+				list: [],
 				leftList: [],
 				rightList: [],
 
@@ -339,10 +248,12 @@
 			
 			// 点击卡片
 			cardHandleClick(item){
-				this.$router.push('/pages/list/detail?id='+item._id+'&title='+item.title)
+				// this.$router.push('/pages/list/detail?id='+item._id+'&title='+item.title)
+				uni.navigateTo({
+					url: '/pages/list/detail?id='+item._id+'&title='+item.title,
+					animationType: 'fade-in'
+				})
 			},
-
-
 
 			searchClick(e) { //点击搜索框
 				uni.hideKeyboard();
@@ -354,7 +265,9 @@
 			retry() {
 				this.refresh()
 			},
-			
+			refresh(){
+				this.getCardsInfo()	
+			},
 			loadMore() {
 				this.getCardsInfo()
 			},

@@ -1,5 +1,5 @@
 <template>
-	<view>
+	<view class="cardAll">
 		<div class="topBar">
 			<img class="avatar"  :src="cardData.avatar" alt="">
 			<div class="userName">{{cardData.userName}}</div>
@@ -8,8 +8,14 @@
 			<span style="font-size: 14rpx;"> ￥</span>{{cardData.price}}
 		</div>
 		<div class="contentPlace">
-			<div class="detail">
+			<div class="detail"> 
 				{{cardData.detail}}
+			</div>
+			<div class="imageOutSider">
+				<div v-for="(item,index) in cardData.imgList" :key="'img'+index">
+					<img  :src="item.path" alt="">
+				</div>
+					
 			</div>
 		</div>
 	</view>
@@ -47,6 +53,11 @@
 </script>
 
 <style scoped lang="scss">
+	.cardAll{
+		overflow: scroll;
+	}
+	
+	
 	.topBar{
 		height: 100rpx;
 		width: 100%;
@@ -81,13 +92,27 @@
 		padding: 0 20rpx;
 		box-sizing: border-box;
 		.detail{
-			background-color: antiquewhite;
 			min-height: 200rpx;
 			width: 100%;
 			font-size: 16rpx;
-			line-height: 20rpx;
-			
-
+			line-height: 40rpx;
+		}
+		.imageOutSider{
+			width: 100%;
+			overflow: hidden;
+			border-radius: 10rpx;
+			img{
+				width: 100%;
+			}
+			.lineTwo{
+				display: flex;
+				flex-direction: row;
+				flex-wrap: nowrap;
+				img{
+					width: 100%;
+					
+				}
+			}
 		}
 	}
 </style>
