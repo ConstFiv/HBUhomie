@@ -19233,9 +19233,9 @@ function createAnimation(option, _this) {
         "127.0.0.1",
         "192.168.1.181"
     ],
-    "debugPort": 57929,
+    "debugPort": 53256,
     "initialLaunchType": "remote",
-    "servePort": 57930,
+    "servePort": 53257,
     "skipFiles": [
         "<node_internals>/**/*.js",
         "D:/HBuilderX/plugins/unicloud/**/*.js"

@@ -96,7 +96,7 @@
 		.detail{
 			min-height: 200rpx;
 			width: 100%;
-			font-size: 16rpx;
+			font-size: 20rpx;
 			line-height: 40rpx;
 		}
 		.imageOutSider{
@@ -125,6 +125,7 @@
 		position: fixed;
 		bottom: 0;
 		left: 0;
+		background-color: #fff;
 		.btnBottom{
 			box-sizing: border-box;
 			height: 70rpx;
