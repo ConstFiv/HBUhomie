@@ -400,7 +400,7 @@ function debounce(fn, interval, isFirstAutoRun) {
       iconColor: '#999999',
       associativeList: [],
       keyBoardPopup: false,
-      hotWorld: 'DCloud', //	搜索热词，如果没有输入即回车，则搜索热词，但是不会加入搜索记录
+      hotWorld: '海尔滚筒洗衣机10KG', //	搜索热词，如果没有输入即回车，则搜索热词，但是不会加入搜索记录
       focus: true, //	是否自动聚焦
       speechEngine: 'iFly' //	语音识别引擎 iFly 讯飞 baidu 百度
     };
@@ -440,17 +440,21 @@ function debounce(fn, interval, isFirstAutoRun) {
       this.searchText = '';
       this.loadList();
     },
+
+
+
+    // 进行检索
     search: function search(value) {
       if (!value && !this.hotWorld) {
         return;
       }
+
       if (value) {
         if (this.searchText !== value) {
           this.searchText = value;
         }
 
         this.localSearchListManage(value);
-
         this.searchLogDbAdd(value);
       } else if (this.hotWorld) {
         this.searchText = this.hotWorld;
@@ -459,6 +463,11 @@ function debounce(fn, interval, isFirstAutoRun) {
       uni.hideKeyboard();
       this.loadList(this.searchText);
     },
+
+
+
+
+
     localSearchListManage: function localSearchListManage(word) {
       var list = uni.getStorageSync(localSearchListKey);
       if (list.length) {
@@ -472,6 +481,9 @@ function debounce(fn, interval, isFirstAutoRun) {
       }
       uni.setStorageSync(localSearchListKey, this.localSearchList);
     },
+
+
+
     LocalSearchListClear: function LocalSearchListClear() {var _this2 = this;
       uni.showModal({
         content: "确认清空搜索历史吗",
@@ -557,10 +569,11 @@ function debounce(fn, interval, isFirstAutoRun) {
       console.log("associativeClick: ", item);
       this.loadList(item.title);
     },
+
     loadList: function loadList() {var text = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
       getApp().globalData.searchText = text;
       uni.switchTab({
-        url: '/pages/list/list' });
+        url: '/pages/list/list?searchText=' + this.searchText });
 
     },
     backPage: function backPage() {

@@ -497,16 +497,31 @@ var cdbRef;var statusBar = function statusBar() {__webpack_require__.e(/*! requi
               // 	});
               // }
               // uni.hideLoading()
-            case 6:case "end":return _context2.stop();}}}, _callee2);}))();}, onLoad: function onLoad() {// this.doList()
-    this.getCardsInfo();}, methods: { // 处理瀑布流
+            case 6:case "end":return _context2.stop();}}}, _callee2);}))();}, // 进入界面
+  onLoad: function onLoad() {console.log("进入界面", getApp().globalData.searchText);if (!getApp().globalData.searchText) {// 请求正常序列的
+      this.getCardsInfo();} else {// 进行搜索
+      this.searchCardsInfo(getApp().globalData.searchText);}}, methods: { // 处理瀑布流
     doList: function doList() {var that = this;this.list.forEach(function (res) {// 获取图片宽高
         uni.getImageInfo({ src: res.src, success: function success(image) {// 计算图片渲染高度
             var showH = 50 * image.height / image.width; // 判断左右盒子高度
             if (that.leftH <= that.rightH) {that.leftList.push(res);that.leftH += showH;} else {that.rightList.push(res);that.rightH += showH;}} });});}, // 获取卡片中的内容
-    getCardsInfo: function getCardsInfo() {var _this3 = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee3() {var secondHandList, res;return _regenerator.default.wrap(function _callee3$(_context3) {while (1) {switch (_context3.prev = _context3.next) {case 0:secondHandList = uniCloud.importObject('secondHandList');_context3.next = 3;return secondHandList.getCardsInfo(_this3.requestTime);case 3:res = _context3.sent;if (res.errCode == 0) {_this3.requestTime = _this3.requestTime + 1;_this3.list = res.data;_this3.doList();}case 5:case "end":return _context3.stop();}}}, _callee3);}))();}, // 点击卡片
+    getCardsInfo: function getCardsInfo() {var _this3 = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee3() {var secondHandList, res;return _regenerator.default.wrap(function _callee3$(_context3) {while (1) {switch (_context3.prev = _context3.next) {case 0:secondHandList = uniCloud.importObject('secondHandList');_context3.next = 3;return secondHandList.getCardsInfo(_this3.requestTime);case 3:res = _context3.sent;if (res.errCode == 0) {_this3.requestTime = _this3.requestTime + 1;_this3.list = res.data;_this3.doList();}case 5:case "end":return _context3.stop();}}}, _callee3);}))();}, // 进行搜索
+    searchCardsInfo: function searchCardsInfo() {}, // 点击卡片
     cardHandleClick: function cardHandleClick(item) {// this.$router.push('/pages/list/detail?id='+item._id+'&title='+item.title)
-      uni.navigateTo({ url: '/pages/list/detail?id=' + item._id + '&title=' + item.title, animationType: 'fade-in' });}, searchClick: function searchClick(e) {//点击搜索框
-      uni.hideKeyboard();uni.navigateTo({ url: '/pages/list/search/search', animationType: 'fade-in' });}, retry: function retry() {this.refresh();}, refresh: function refresh() {this.getCardsInfo();}, loadMore: function loadMore() {this.getCardsInfo();}, onqueryerror: function onqueryerror(e) {console.error(e);}, onpullingdown: function onpullingdown(e) {console.log(e);this.showRefresh = true;if (e.pullingDistance > 100) {this.refresh();}} },
+      uni.redirectTo({ url: '/pages/list/detail?id=' + item._id + '&title=' + item.title, animationType: 'fade-in' });}, searchClick: function searchClick(e) {//点击搜索框
+      uni.hideKeyboard();uni.redirectTo({ url: '/pages/list/search/search', animationType: 'fade-in' });}, retry: function retry() {this.refresh();}, refresh: function refresh() {this.getCardsInfo();}, loadMore: function loadMore() {this.getCardsInfo();},
+    onqueryerror: function onqueryerror(e) {
+      console.error(e);
+    },
+    onpullingdown: function onpullingdown(e) {
+      console.log(e);
+      this.showRefresh = true;
+      if (e.pullingDistance > 100) {
+        this.refresh();
+      }
+    } },
+
+
   onPullDownRefresh: function onPullDownRefresh() {
     this.refresh();
   },

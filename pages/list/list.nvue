@@ -200,10 +200,21 @@
 			// }
 			// uni.hideLoading()
 		},
+		
+		
+		// 进入界面
 		onLoad() {
-			// this.doList()
-			this.getCardsInfo()
+			console.log("进入界面",getApp().globalData.searchText)
+			if(!getApp().globalData.searchText){
+				// 请求正常序列的
+				this.getCardsInfo()
+			}else{
+				// 进行搜索
+				this.searchCardsInfo(getApp().globalData.searchText)
+			}
+			
 		},
+	
 		methods: {
 			// 处理瀑布流
 			doList() {
@@ -243,13 +254,17 @@
 				
 			},
 			
+			// 进行搜索
+			searchCardsInfo(){
+				
+			},
 			
 			
 			
 			// 点击卡片
 			cardHandleClick(item){
 				// this.$router.push('/pages/list/detail?id='+item._id+'&title='+item.title)
-				uni.navigateTo({
+				uni.redirectTo({
 					url: '/pages/list/detail?id='+item._id+'&title='+item.title,
 					animationType: 'fade-in'
 				})
@@ -257,7 +272,7 @@
 
 			searchClick(e) { //点击搜索框
 				uni.hideKeyboard();
-				uni.navigateTo({
+				uni.redirectTo({
 					url: '/pages/list/search/search',
 					animationType: 'fade-in'
 				});
