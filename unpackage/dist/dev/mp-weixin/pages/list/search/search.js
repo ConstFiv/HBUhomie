@@ -427,6 +427,15 @@ function debounce(fn, interval, isFirstAutoRun) {
 
 
   },
+
+  onBackPress: function onBackPress() {
+    getApp().globalData.searchText = "";
+    uni.switchTab({
+      url: '/pages/list/list' });
+
+    return true;
+  },
+
   methods: {
     clear: function clear(res) {
       console.log("res: ", res);
@@ -573,7 +582,7 @@ function debounce(fn, interval, isFirstAutoRun) {
     loadList: function loadList() {var text = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
       getApp().globalData.searchText = text;
       uni.switchTab({
-        url: '/pages/list/list?searchText=' + this.searchText });
+        url: '/pages/list/list' });
 
     },
     backPage: function backPage() {

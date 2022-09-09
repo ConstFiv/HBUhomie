@@ -113,31 +113,6 @@ var _uniAgree = _interopRequireDefault(__webpack_require__(/*! @/pages/uni-agree
 
     (0, _appInit.default)();
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   },
   onShow: function onShow() {
     console.log('App Show');

@@ -484,30 +484,26 @@ var _gps = _interopRequireDefault(__webpack_require__(/*! @/uni_modules/json-gps
 //
 //
 var cdbRef;var statusBar = function statusBar() {__webpack_require__.e(/*! require.ensure | uni_modules/uni-nav-bar/components/uni-nav-bar/uni-status-bar */ "uni_modules/uni-nav-bar/components/uni-nav-bar/uni-status-bar").then((function () {return resolve(__webpack_require__(/*! @/uni_modules/uni-nav-bar/components/uni-nav-bar/uni-status-bar */ 266));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var gps = new _gps.default(),db = uniCloud.database();var _default = { components: { statusBar: statusBar }, computed: { inputPlaceholder: function inputPlaceholder(e) {if (uni.getStorageSync('CURRENT_LANG') == "en") {return 'Please enter the search content';} else {return '请输入搜索内容';}}, colList: function colList() {return [db.collection('opendb-news-articles').where(this.where).field('avatar,title,last_modify_date,user_id').getTemp(), db.collection('uni-id-users').field('_id,username').getTemp()];} }, data: function data() {return { list: [], leftList: [], rightList: [], leftH: 0, rightH: 0, where: '"article_status" == 1', keyword: "", showRefresh: false, listHight: 0, // 瀑布流请求的次数
-      requestTime: 0 };}, watch: { keyword: function keyword(_keyword, oldValue) {var where = '"article_status" == 1 ';if (_keyword) {this.where = where + "&& /".concat(_keyword, "/.test(title)");} else {this.where = where;}} }, onReady: function onReady() {var _this = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:_this.listHight = 'auto';cdbRef = _this.$refs.udb;case 2:case "end":return _context.stop();}}}, _callee);}))();}, onShow: function onShow() {var _this2 = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee2() {var location;return _regenerator.default.wrap(function _callee2$(_context2) {while (1) {switch (_context2.prev = _context2.next) {case 0:_this2.keyword = getApp().globalData.searchText;getApp().globalData.searchText = ''; //这里仅演示如何，在onShow生命周期获取设备位置，并在设备或者应用没有权限时自动引导。设置完毕自动重新获取。
-              //你可以基于他做自己的业务，比如：根据距离由近到远排序列表数据等
-              // uni.showLoading({
-              // 	title:"获取定位中"
-              // });
-              //默认h5端不获取定位
-              _context2.next = 4;return gps.getLocation({ geocode: true });case 4:location = _context2.sent;console.log(location); // if(location){
-              // 	uni.showToast({
-              // 		title: JSON.stringify(location),
-              // 		icon: 'none'
-              // 	});
-              // }
-              // uni.hideLoading()
-            case 6:case "end":return _context2.stop();}}}, _callee2);}))();}, // 进入界面
-  onLoad: function onLoad() {console.log("进入界面", getApp().globalData.searchText);this.getCardsInfo();}, methods: { // 处理瀑布流
+      requestTime: 0, // 退出小程序的返回次数
+      backButtonPress: 0 };}, watch: { keyword: function keyword(_keyword, oldValue) {var where = '"article_status" == 1 ';if (_keyword) {this.where = where + "&& /".concat(_keyword, "/.test(title)");} else {this.where = where;}} }, onReady: function onReady() {var _this = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:_this.listHight = 'auto';cdbRef = _this.$refs.udb;case 2:case "end":return _context.stop();}}}, _callee);}))();}, onShow: function onShow() {var _this2 = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee2() {return _regenerator.default.wrap(function _callee2$(_context2) {while (1) {switch (_context2.prev = _context2.next) {case 0:_this2.keyword = getApp().globalData.searchText;getApp().globalData.searchText = '';case 2:case "end":return _context2.stop();}}}, _callee2);}))();}, // 进入界面
+  onLoad: function onLoad() {console.log("进入界面", getApp().globalData.searchText);this.getCardsInfo();}, onBackPress: function onBackPress(options) {var _this3 = this;this.backButtonPress++;if (this.backButtonPress > 1) {plus.runtime.quit();} else {plus.nativeUI.toast('再按一次退出应用');}setTimeout(function () {_this3.backButtonPress = 0;}, 1000);return true;}, methods: { // 处理瀑布流
     doList: function doList() {var that = this;this.list.forEach(function (res) {// 获取图片宽高
         uni.getImageInfo({ src: res.src, success: function success(image) {// 计算图片渲染高度
             var showH = 50 * image.height / image.width; // 判断左右盒子高度
             if (that.leftH <= that.rightH) {that.leftList.push(res);that.leftH += showH;} else {that.rightList.push(res);that.rightH += showH;}} });});}, // 获取卡片中的内容
-    getCardsInfo: function getCardsInfo() {var _this3 = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee3() {var secondHandList, res;return _regenerator.default.wrap(function _callee3$(_context3) {while (1) {switch (_context3.prev = _context3.next) {case 0:secondHandList = uniCloud.importObject('secondHandList');_context3.next = 3;return secondHandList.getCardsInfo(_this3.requestTime, getApp().globalData.searchText);case 3:res = _context3.sent;if (res.errCode == 0) {_this3.requestTime = _this3.requestTime + 1;_this3.list = res.data;_this3.doList();}case 5:case "end":return _context3.stop();}}}, _callee3);}))();}, // 进行搜索
+    getCardsInfo: function getCardsInfo() {var _this4 = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee3() {var secondHandList, res;return _regenerator.default.wrap(function _callee3$(_context3) {while (1) {switch (_context3.prev = _context3.next) {case 0:secondHandList = uniCloud.importObject('secondHandList');_context3.next = 3;return secondHandList.getCardsInfo(_this4.requestTime, getApp().globalData.searchText);case 3:res = _context3.sent;if (res.errCode == 0) {_this4.requestTime = _this4.requestTime + 1;_this4.list = res.data;_this4.doList();}case 5:case "end":return _context3.stop();}}}, _callee3);}))();}, // 进行搜索
     searchCardsInfo: function searchCardsInfo() {}, // 点击卡片
     cardHandleClick: function cardHandleClick(item) {// this.$router.push('/pages/list/detail?id='+item._id+'&title='+item.title)
-      uni.redirectTo({ url: '/pages/list/detail?id=' + item._id + '&title=' + item.title, animationType: 'fade-in' });}, searchClick: function searchClick(e) {//点击搜索框
-      uni.hideKeyboard();uni.redirectTo({ url: '/pages/list/search/search', animationType: 'fade-in' });}, retry: function retry() {this.refresh();}, refresh: function refresh() {this.getCardsInfo();}, loadMore: function loadMore() {this.getCardsInfo();}, onqueryerror: function onqueryerror(e) {console.error(e);},
+      uni.navigateTo({ url: '/pages/list/detail?id=' + item._id + '&title=' + item.title, animationType: 'fade-in' });}, searchClick: function searchClick(e) {//点击搜索框
+      uni.hideKeyboard();uni.redirectTo({ url: '/pages/list/search/search', animationType: 'fade-in' });}, retry: function retry() {this.refresh();}, refresh: function refresh() {
+      this.getCardsInfo();
+    },
+    loadMore: function loadMore() {
+      this.getCardsInfo();
+    },
+    onqueryerror: function onqueryerror(e) {
+      console.error(e);
+    },
     onpullingdown: function onpullingdown(e) {
       console.log(e);
       this.showRefresh = true;

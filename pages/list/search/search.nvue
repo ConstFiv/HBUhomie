@@ -167,6 +167,15 @@
 			this.statusBarHeight = `${uni.getSystemInfoSync().statusBarHeight}px`;
 			//#endif
 		},
+		
+		onBackPress(){
+			getApp().globalData.searchText = "";
+			uni.switchTab({
+				url:'/pages/list/list'
+			})
+			return true;
+		},
+		
 		methods: {
 			clear(res) {
 				console.log("res: ", res);
@@ -313,7 +322,7 @@
 			loadList(text = '') {
 				getApp().globalData.searchText = text;
 				uni.switchTab({
-					url:'/pages/list/list?searchText='+this.searchText,
+					url:'/pages/list/list'
 				})
 			},
 			backPage(){
